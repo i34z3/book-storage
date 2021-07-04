@@ -18,17 +18,13 @@ const bookSchema = new Schema({
     isbn: {
         type: String, 
         required: true
-    },
-    bookCopies: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Copy'
-    }]
+    }
 })
 
 bookSchema.virtual('booksCopy', {
     ref: 'Copy',
     localField: '_id',
-    foreignField: 'copy'
+    foreignField: 'book'
 })
 
 bookSchema.set('toObject', { 
