@@ -1,25 +1,27 @@
 {
   "name": "book-storage",
   "version": "1.0.0",
-  "description": "A simple Restful API for exemplify the usage of NodeJS and Express.",
+  "description": "A simple RESTful API for exemplify the usage of NodeJS, Express and MongoDB.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/app.js"
+    "test": "jest --env node --detectOpenHandles"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/i34z3/book-storage.git"
   },
-  "author": "Guilherme Yoshida",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/i34z3/book-storage/issues"
   },
   "homepage": "https://github.com/i34z3/book-storage#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongoose": "^5.13.0",
-    "nodemon": "^2.0.9"
+    "jest": "^27.0.6",
+    "mongoose": "^5.13.2",
+    "nodemon": "^2.0.12"
   }
 }

@@ -8,8 +8,7 @@ const bookSchema = new Schema({
     },
     author: {
         type: String,
-        required: true,
-        min: 6
+        required: true
     },
     summary: {
         type: String, 
@@ -19,19 +18,6 @@ const bookSchema = new Schema({
         type: String, 
         required: true
     }
-})
-
-bookSchema.virtual('booksCopy', {
-    ref: 'Copy',
-    localField: '_id',
-    foreignField: 'book'
-})
-
-bookSchema.set('toObject', { 
-    virtuals: true 
-})
-bookSchema.set('toJSON', { 
-    virtuals: true 
 })
 
 module.exports = mongoose.model('Book', bookSchema)
