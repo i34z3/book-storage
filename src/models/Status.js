@@ -10,16 +10,16 @@ const statusSchema = new Schema({
     }
 })
 
-statusSchema.virtual('statusCopy',{
+statusSchema.virtual('statusCopy', {
     ref: 'Copy',
     localField: '_id',
-    foreignField: 'copy'
+    foreignField: 'status'
 })
 
-statusSchema.virtual.set('toObject', { 
+statusSchema.set('toObject', { 
     virtuals: true 
 })
-statusSchema.virtual.set('toJSON', { 
+statusSchema.set('toJSON', { 
     virtuals: true 
 })
 
