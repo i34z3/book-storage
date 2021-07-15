@@ -1,4 +1,3 @@
-const connection = require('../connection/database')
 const Book = require('../model/Book')
 
 exports.getBooks = () => {
@@ -10,13 +9,12 @@ exports.getBook = (id) => {
 }
 
 exports.saveBook = (book) => {
-    const doc = new Book({
+    return Book.create({
         title: book.title,
         author: book.author,
         summary: book.summary,
         isbn: book.isbn
     })
-    return doc.save()
 }
 
 exports.updateBook = (id, book) => {
@@ -36,8 +34,5 @@ exports.updateBook = (id, book) => {
 }
 
 exports.deleteBook = (id) => {
-    const doc = new Book({
-        _id: id
-    })
-    return doc.deleteOne()
+    return Book.deleteOne({_id: id})
 }

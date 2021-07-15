@@ -34,7 +34,7 @@ test('Should save book', async () => {
     const response = await request('http://localhost:3000/books/', 'post', data)
     const book = response.data
     expect(book.title).toBe(data.title)
-    await booksService.deleteBook(data.id)
+    await booksService.deleteBook(book._id)
 })
 
 test('Should update book', async () => {
@@ -44,6 +44,7 @@ test('Should update book', async () => {
         summary: generate(),
         isbn: generate()
     })
+    console.log(book.id)
     book.title = generate()
     book.author = generate()
     book.summary = generate()
@@ -67,5 +68,5 @@ test('Should delete book', async () => {
     })
     await request(`http://localhost:3000/books/${book.id}`, 'delete')
     const books = await booksService.getBooks()
-    expect(books).toHaveLength(1)
+    expect(books).toHaveLength(0)
 })
