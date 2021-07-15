@@ -3,25 +3,41 @@ const router = express.Router()
 const booksService = require('../service/booksService')
 
 router.get('/books', async (req, res) => {
-    const books = await booksService.getBooks()
-    res.json(books)
+    try {
+        const books = await booksService.getBooks()
+        res.json(books)
+    } catch (err) {
+        next(err)
+    }
 })
 
 router.post('/books', async (req, res) => {
     const book = req.body
-    const newBook = await booksService.saveBook(book)
-    res.json(newBook)
+    try {
+        const newBook = await booksService.saveBook(book)
+        res.status(201).json(newBook)
+    } catch (err) {
+        next(err)
+    }
 })
 
 router.put('/books/:id', async (req, res) => {
     const book = req.body
-    await booksService.updateBook(req.params.id, book)
-    res.end()
+    try {
+        await booksService.updateBook(req.params.id, book)
+        res.status(204).json(book)
+    } catch (err) {
+        next(err)
+    }
 })
 
 router.delete('/books/:id', async (req, res) => {
-    await booksService.deleteBook(req.params.id)
-    res.end()
+    try {
+        await booksService.deleteBook(req.params.id)
+        res.status(204).end()
+    } catch (err) {
+        next(err)
+    }
 })
 
 module.exports = router
